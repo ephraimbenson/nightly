@@ -21,23 +21,24 @@ class MyApp extends StatelessWidget {
         radius: 110,
         text: intro_text,
         textStyle: const TextStyle(
-            fontSize: 32, fontWeight: FontWeight.bold, color: Colors.yellow),
+            fontSize: 32, fontWeight: FontWeight.bold, color: Colors.black),
         startAngle: -pi / 2,
         stretchAngle: pi,
         startAngleAlignment: StartAngleAlignment.start,
         placement: Placement.outside);
 
-    Widget createNewInviteButton = ElevatedButton(
-        style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all<Color>(Colors.yellow)),
-        onPressed: null,
-        child: const Text('Create invite',
-            style: TextStyle(
-                fontSize: 32,
-                fontWeight: FontWeight.bold,
-                color: Colors.black)));
+    final ButtonStyle buttonStyle = ElevatedButton.styleFrom(
+        side: BorderSide(width: 3.0, color: Colors.black),
+        minimumSize: Size(300, 0),
+        padding: EdgeInsets.all(30),
+        primary: Colors.yellow,
+        textStyle: TextStyle(fontSize: 24));
 
-    Widget eventsRow = Row();
+    Widget createNewInviteButton = ElevatedButton(
+      style: buttonStyle,
+      onPressed: () {},
+      child: const Text('Create Event'),
+    );
 
     Widget buttonSection = Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -55,18 +56,6 @@ class MyApp extends StatelessWidget {
         children: [
           welcomeBanner,
           createNewInviteButton,
-          Text("Today, Saturday, Next Week",
-              style:
-                  TextStyle(color: Colors.yellow, fontWeight: FontWeight.bold)),
-          OutlinedButton(
-            onPressed: () {
-              print('Received click');
-            },
-            child: const Text(
-              'Example Event @10pm',
-              style: TextStyle(fontSize: 32),
-            ),
-          ),
           buttonSection,
         ]);
 
@@ -77,27 +66,24 @@ class MyApp extends StatelessWidget {
               backwardsCompatibility: false,
               systemOverlayStyle: SystemUiOverlayStyle.light),
           primarySwatch: Colors.yellow,
-          outlinedButtonTheme: OutlinedButtonThemeData(
-            style: OutlinedButton.styleFrom(primary: Colors.white),
-          ),
         ),
         debugShowCheckedModeBanner: false,
         home: Scaffold(
           // extendBodyBehindAppBar: true,
-          backgroundColor: Colors.black, //enable me!
+          backgroundColor: Colors.yellow, //enable me!
           appBar: AppBar(
             backgroundColor: Colors.transparent,
             elevation: 0, // disables shadow
             leading: IconButton(
                 icon: Icon(Icons.menu),
-                color: Colors.yellow,
+                color: Colors.black,
                 onPressed: () {
                   // do thing
                 }),
             actions: <Widget>[
               IconButton(
                   icon: Icon(Icons.add_circle_rounded),
-                  color: Colors.yellow,
+                  color: Colors.black,
                   onPressed: () {
                     // do things
                   }),
