@@ -89,18 +89,12 @@ class MyApp extends StatelessWidget {
             backgroundColor: Colors.transparent,
             elevation: 0, // disables shadow
             leading: IconButton(
-                icon: Icon(Icons.menu),
-                color: Colors.yellow,
-                onPressed: () {
-                  // do thing
-                }),
+                icon: Icon(Icons.menu), color: Colors.yellow, onPressed: null),
             actions: <Widget>[
               IconButton(
                   icon: Icon(Icons.add_circle_rounded),
                   color: Colors.yellow,
-                  onPressed: () {
-                    // do things
-                  }),
+                  onPressed: null),
             ],
           ),
           body: Center(child: centerColumn),
