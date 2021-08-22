@@ -22,7 +22,6 @@ class WelcomePage extends StatelessWidget {
         side: BorderSide(width: 3.0, color: Colors.black),
         minimumSize: Size(300, 0),
         padding: EdgeInsets.all(30),
-        primary: Colors.yellow,
         textStyle: TextStyle(fontSize: 24));
 
     Widget createNewInviteButton = ElevatedButton(
