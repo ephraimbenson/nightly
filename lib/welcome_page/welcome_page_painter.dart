@@ -21,7 +21,6 @@ class WelcomePagePainter extends CustomPainter {
       ..lineTo(shapeBounds.bottomLeft.dx, shapeBounds.bottomLeft.dy)
       ..close();
     canvas.drawPath(backgroundPath, paint);
-    final blackPaint = Paint()..color = Colors.black;
 
     canvas.drawArc(
         new Rect.fromLTWH(0, 0, shapeBounds.width, shapeBounds.height * 2),
@@ -36,7 +35,7 @@ class WelcomePagePainter extends CustomPainter {
         pi,
         pi,
         false,
-        blackPaint);
+        paint);
   }
 
   @override

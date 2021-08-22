@@ -22,6 +22,7 @@ class WelcomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     double displayHeight = MediaQuery.of(context).size.height;
     double displayWidth = MediaQuery.of(context).size.width;
+    final double statusBarHeight = MediaQuery.of(context).padding.top;
     final double welcomeRadius = displayWidth / 2;
 
     Widget welcomeBanner = ArcText(
@@ -47,43 +48,58 @@ class WelcomePage extends StatelessWidget {
       Positioned(left: 0, right: 0, top: welcomeRadius, child: welcomeBanner),
     ]);
 
-    Widget createNewInviteButton = ElevatedButton(
-      style: buttonStyle,
-      onPressed: () {
-        showEditorPage(context);
-      },
+    Widget createNewInviteButton = SizedBox(
+        width: displayWidth * 0.90,
+        child: ElevatedButton(
+          style: buttonStyle,
+          onPressed: () {
+            showEditorPage(context);
+          },
+          child: Column(
+            children: <Widget>[
+              Text("Create invite"),
+              Icon(Icons.arrow_right_alt)
+            ],
+          ),
+        ));
+
+    Widget buttonsColumn = Expanded(
+        child: Container(
+      color: Colors.yellow,
       child: Column(
-        children: <Widget>[Text("Create invite"), Icon(Icons.arrow_right_alt)],
-      ),
-    );
+          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisSize: MainAxisSize.max,
+          // crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            SizedBox(height: 20),
+            createNewInviteButton,
+            SizedBox(height: 20),
+            Text("Today"),
+            eventCards,
+          ]),
+    ));
 
     Widget centerColumn = Column(
         mainAxisAlignment: MainAxisAlignment.start,
         mainAxisSize: MainAxisSize.max,
-        // crossAxisAlignment: CrossAxisAlignment.center,
         children: [
+          SizedBox(
+              height:
+                  statusBarHeight), // Probably a cleaner way to do this exists?
           myStack,
-          SizedBox(height: 20),
-          createNewInviteButton,
-          SizedBox(height: 20),
-          Text("Today"),
-          eventCards,
-          SizedBox(height: 20),
-          Text("Saturday"),
-          SizedBox(height: 20),
-          Text("Next Week"),
+          buttonsColumn
         ]);
 
     return new Scaffold(
-      // extendBodyBehindAppBar: true,
-      backgroundColor: Colors.yellow, //enable me!
+      extendBodyBehindAppBar: true,
+      backgroundColor: Colors.black, //enable me!
       appBar: AppBar(
-        // backgroundColor: Colors.transparent,
-        // elevation: 0, // disables shadow
+        backgroundColor: Colors.transparent,
+        elevation: 0, // disables shadow
         actions: <Widget>[
           IconButton(
               icon: Icon(Icons.add_circle_rounded),
-              color: Colors.black,
+              color: Colors.yellow,
               onPressed: () {
                 showEditorPage(context);
               }),

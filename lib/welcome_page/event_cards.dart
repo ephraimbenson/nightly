@@ -7,6 +7,7 @@ Widget eventCards = new Container(
     children: new List.generate(8, (int index) {
       return new Card(
           color: Colors.black,
+          // color: Colors.blue[(8 - index) * 100],
           child: Padding(
             padding: EdgeInsets.all(10.0),
             child: new Container(

@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_quill/flutter_quill.dart' hide Text;
 
 class EditorPage extends StatefulWidget {
@@ -19,6 +22,8 @@ class _EditorPageState extends State<EditorPage> {
       // backgroundColor: Colors.black,
       appBar: AppBar(
         title: Text(widget.title),
+        systemOverlayStyle: SystemUiOverlayStyle.dark,
+        iconTheme: IconThemeData(color: Colors.black),
       ),
       body: Center(
         child: Column(
