@@ -4,7 +4,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'welcome_page/welcome.dart';
+import 'welcome_page/welcome_page.dart';
 
 void main() => runApp(MyApp());
 

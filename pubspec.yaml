@@ -29,6 +29,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter_arc_text: ^0.5.0
   storybook_flutter: ^0.5.1
+  flutter_quill: ^1.9.4
   # animated_text_kit: ^4.2.1
 
 dev_dependencies:

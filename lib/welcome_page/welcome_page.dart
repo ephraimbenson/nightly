@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_arc_text/flutter_arc_text.dart';
 import 'package:flutter/rendering.dart';
+import 'package:event_demo/editor_page.dart';
 import 'event_cards.dart';
 
 const intro_text = 'Welcome to Nightly';
@@ -27,7 +28,14 @@ class WelcomePage extends StatelessWidget {
 
     Widget createNewInviteButton = ElevatedButton(
       style: buttonStyle,
-      onPressed: () {},
+      onPressed: () {
+        print("creating new invite!");
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => EditorPage(title: "My Draft")),
+        );
+      },
       child: Column(
         children: <Widget>[Text("Create invite"), Icon(Icons.arrow_right_alt)],
       ),
@@ -57,7 +65,7 @@ class WelcomePage extends StatelessWidget {
               icon: Icon(Icons.add_circle_rounded),
               color: Colors.black,
               onPressed: () {
-                // do things
+                // transition!
               }),
         ],
       ),
