@@ -65,18 +65,15 @@ class WelcomePage extends StatelessWidget {
 
     Widget buttonsColumn = Expanded(
         child: Container(
-      color: Colors.yellow,
-      child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          mainAxisSize: MainAxisSize.max,
-          // crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            SizedBox(height: 20),
-            createNewInviteButton,
-            SizedBox(height: 20),
-            Text("Today"),
-            eventCards,
-          ]),
+      color: Colors.yellow, // Fills color to bottom of screen
+      child: Column(children: [
+        SizedBox(height: 20),
+        createNewInviteButton,
+        SizedBox(height: 20),
+        EventCards("Today"),
+        EventCards("Saturday"),
+        EventCards("Next Week"),
+      ]),
     ));
 
     Widget centerColumn = Column(
@@ -106,6 +103,7 @@ class WelcomePage extends StatelessWidget {
         ],
       ),
       body: centerColumn,
+      //TODO: replace drawer with custom UI
       drawer: Drawer(
         // Add a ListView to the drawer. This ensures the user can scroll
         // through the options in the drawer if there isn't enough vertical

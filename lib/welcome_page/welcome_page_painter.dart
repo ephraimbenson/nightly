@@ -14,8 +14,6 @@ class WelcomePagePainter extends CustomPainter {
   void _drawBackground(Canvas canvas, Rect shapeBounds) {
     final paint = Paint()..color = color;
     final backgroundPath = Path()
-      // ..moveTo(shapeBounds.left + 200, shapeBounds.top + 500)
-      // ..arcTo(shapeBounds, -pi, pi, false)
       ..lineTo(shapeBounds.topRight.dx, shapeBounds.topRight.dy)
       ..lineTo(shapeBounds.bottomRight.dx, shapeBounds.bottomRight.dy)
       ..lineTo(shapeBounds.bottomLeft.dx, shapeBounds.bottomLeft.dy)
