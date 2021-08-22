@@ -8,6 +8,14 @@ import 'event_cards.dart';
 
 const intro_text = 'Welcome to Nightly';
 
+void showEditorPage(context) {
+  print("creating new invite!");
+  Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) => EditorPage(title: "My Draft")),
+  );
+}
+
 class WelcomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -29,12 +37,7 @@ class WelcomePage extends StatelessWidget {
     Widget createNewInviteButton = ElevatedButton(
       style: buttonStyle,
       onPressed: () {
-        print("creating new invite!");
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) => EditorPage(title: "My Draft")),
-        );
+        showEditorPage(context);
       },
       child: Column(
         children: <Widget>[Text("Create invite"), Icon(Icons.arrow_right_alt)],
@@ -65,7 +68,7 @@ class WelcomePage extends StatelessWidget {
               icon: Icon(Icons.add_circle_rounded),
               color: Colors.black,
               onPressed: () {
-                // transition!
+                showEditorPage(context);
               }),
         ],
       ),
@@ -91,19 +94,15 @@ class WelcomePage extends StatelessWidget {
             ListTile(
               title: const Text('sample draft 1'),
               onTap: () {
-                // Update the state of the app
-                // ...
-                // Then close the drawer
                 Navigator.pop(context);
+                showEditorPage(context);
               },
             ),
             ListTile(
               title: const Text('sample draft 2'),
               onTap: () {
-                // Update the state of the app
-                // ...
-                // Then close the drawer
                 Navigator.pop(context);
+                showEditorPage(context);
               },
             ),
           ],

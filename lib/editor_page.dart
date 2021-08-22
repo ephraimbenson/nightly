@@ -1,19 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_quill/flutter_quill.dart' hide Text;
 
-// class MyApp extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       title: 'Flutter Demo',
-//       theme: ThemeData(
-//         primarySwatch: Colors.blue,
-//       ),
-//       home: EditorPage(title: 'Flutter Demo Home Page'),
-//     );
-//   }
-// }
-
 class EditorPage extends StatefulWidget {
   EditorPage({Key? key, required this.title}) : super(key: key);
 
@@ -29,6 +16,7 @@ class _EditorPageState extends State<EditorPage> {
     QuillController _controller = QuillController.basic();
 
     return Scaffold(
+      // backgroundColor: Colors.black,
       appBar: AppBar(
         title: Text(widget.title),
       ),
