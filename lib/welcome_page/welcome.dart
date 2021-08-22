@@ -27,7 +27,9 @@ class WelcomePage extends StatelessWidget {
     Widget createNewInviteButton = ElevatedButton(
       style: buttonStyle,
       onPressed: () {},
-      child: const Text('Create invite'),
+      child: Column(
+        children: <Widget>[Text("Create invite"), Icon(Icons.arrow_right_alt)],
+      ),
     );
 
     Widget cards = new Container(
@@ -36,13 +38,36 @@ class WelcomePage extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         children: new List.generate(8, (int index) {
           return new Card(
-            color: Colors.grey[index * 100],
-            child: new Container(
-              width: 100.0,
-              height: 50.0,
-              child: new Text("event details"),
-            ),
-          );
+              color: Colors.black,
+              child: Padding(
+                padding: EdgeInsets.all(10.0),
+                child: new Container(
+                  width: 150.0,
+                  height: 50.0,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Text(
+                        "Event Details",
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      Text(
+                        "@10:30 pm - 1 am",
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      Row(
+                        children: [
+                          Icon(Icons.home, color: Colors.white),
+                          Text(
+                            "Witch House",
+                            style: TextStyle(color: Colors.white),
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+              ));
         }),
       ),
     );
