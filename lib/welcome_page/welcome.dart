@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_arc_text/flutter_arc_text.dart';
 import 'package:flutter/rendering.dart';
+import 'event_cards.dart';
 
 const intro_text = 'Welcome to Nightly';
 
@@ -32,46 +33,6 @@ class WelcomePage extends StatelessWidget {
       ),
     );
 
-    Widget cards = new Container(
-      height: 100.0,
-      child: new ListView(
-        scrollDirection: Axis.horizontal,
-        children: new List.generate(8, (int index) {
-          return new Card(
-              color: Colors.black,
-              child: Padding(
-                padding: EdgeInsets.all(10.0),
-                child: new Container(
-                  width: 150.0,
-                  height: 50.0,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Text(
-                        "Event Details",
-                        style: TextStyle(color: Colors.white),
-                      ),
-                      Text(
-                        "@10:30 pm - 1 am",
-                        style: TextStyle(color: Colors.white),
-                      ),
-                      Row(
-                        children: [
-                          Icon(Icons.home, color: Colors.white),
-                          Text(
-                            "Witch House",
-                            style: TextStyle(color: Colors.white),
-                          ),
-                        ],
-                      )
-                    ],
-                  ),
-                ),
-              ));
-        }),
-      ),
-    );
-
     Widget centerColumn = Column(
         mainAxisAlignment: MainAxisAlignment.start,
         mainAxisSize: MainAxisSize.max,
@@ -79,11 +40,10 @@ class WelcomePage extends StatelessWidget {
         children: [
           SizedBox(height: 100),
           welcomeBanner,
-          // Text("Welcome to Nightly"),
           SizedBox(height: 25),
           createNewInviteButton,
           SizedBox(height: 50),
-          cards,
+          eventCards,
         ]);
 
     return new Scaffold(
@@ -92,12 +52,6 @@ class WelcomePage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0, // disables shadow
-        leading: IconButton(
-            icon: Icon(Icons.menu),
-            color: Colors.black,
-            onPressed: () {
-              // do thing
-            }),
         actions: <Widget>[
           IconButton(
               icon: Icon(Icons.add_circle_rounded),
@@ -108,6 +62,45 @@ class WelcomePage extends StatelessWidget {
         ],
       ),
       body: Center(child: centerColumn),
+      drawer: Drawer(
+        // Add a ListView to the drawer. This ensures the user can scroll
+        // through the options in the drawer if there isn't enough vertical
+        // space to fit everything.
+        child: ListView(
+          // Important: Remove any padding from the ListView.
+          padding: EdgeInsets.zero,
+          children: [
+            Container(
+                height: 125.0,
+                child: DrawerHeader(
+                  decoration: BoxDecoration(
+                    color: Colors.yellow,
+                  ),
+                  child: Text('My invite drafts',
+                      style:
+                          TextStyle(fontSize: 28, fontWeight: FontWeight.bold)),
+                )),
+            ListTile(
+              title: const Text('sample draft 1'),
+              onTap: () {
+                // Update the state of the app
+                // ...
+                // Then close the drawer
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: const Text('sample draft 2'),
+              onTap: () {
+                // Update the state of the app
+                // ...
+                // Then close the drawer
+                Navigator.pop(context);
+              },
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
