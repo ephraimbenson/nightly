@@ -11,6 +11,8 @@ const intro_text = 'Welcome to Nightly';
 
 //TODO: refactor this monster file
 
+//TODO: icons in appbar must become stateful widgets and change color depending on scroll position
+
 void showEditorPage(context) {
   print("creating new invite!");
   Navigator.push(
@@ -85,8 +87,10 @@ class WelcomePage extends StatelessWidget {
                 return Future<void>.value();
               },
               expandedHeight: welcomeRadius,
-              flexibleSpace:
-                  FlexibleSpaceBar(title: Text('Nightly'), background: myStack),
+              flexibleSpace: FlexibleSpaceBar(
+                  title: Text('Nightly'),
+                  centerTitle: true,
+                  background: myStack),
               actions: <Widget>[
                 IconButton(
                     icon: Icon(Icons.add_circle_rounded),
