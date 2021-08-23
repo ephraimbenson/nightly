@@ -9,6 +9,10 @@ import 'welcome_page_painter.dart';
 
 const intro_text = 'Welcome to Nightly';
 
+//TODO: event cards need to be displayed in a listview to enable scrolling/overflow
+//TODO: SliverAppBar
+//TODO: refactor this monster file
+
 void showEditorPage(context) {
   print("creating new invite!");
   Navigator.push(
@@ -36,8 +40,8 @@ class WelcomePage extends StatelessWidget {
 
     final ButtonStyle buttonStyle = ElevatedButton.styleFrom(
         side: BorderSide(width: 3.0, color: Colors.black),
-        minimumSize: Size(300, 0),
-        padding: EdgeInsets.all(30),
+        // minimumSize: Size(300, 0),
+        padding: EdgeInsets.all(20),
         textStyle: TextStyle(fontSize: 24));
 
     Widget myStack = Stack(children: <Widget>[
@@ -48,7 +52,7 @@ class WelcomePage extends StatelessWidget {
       Positioned(left: 0, right: 0, top: welcomeRadius, child: welcomeBanner),
     ]);
 
-    Widget createNewInviteButton = SizedBox(
+    Widget bigInviteButton = SizedBox(
         width: displayWidth * 0.90,
         child: ElevatedButton(
           style: buttonStyle,
@@ -65,16 +69,15 @@ class WelcomePage extends StatelessWidget {
 
     Widget buttonsColumn = Expanded(
         child: Container(
-      color: Colors.yellow, // Fills color to bottom of screen
-      child: Column(children: [
-        SizedBox(height: 20),
-        createNewInviteButton,
-        SizedBox(height: 20),
-        EventCards("Today"),
-        EventCards("Saturday"),
-        EventCards("Next Week"),
-      ]),
-    ));
+            color: Colors.yellow, // Fills color to bottom of screen
+            child: MediaQuery.removePadding(
+                context: context,
+                // removeTop: true,
+                child: ListView(children: <Widget>[
+                  EventCards("Today"),
+                  EventCards("Saturday"),
+                  EventCards("Next Week"),
+                ]))));
 
     Widget centerColumn = Column(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -84,6 +87,7 @@ class WelcomePage extends StatelessWidget {
               height:
                   statusBarHeight), // Probably a cleaner way to do this exists?
           myStack,
+          // bigInviteButton, // TODO: re-enable me when working
           buttonsColumn
         ]);
 
