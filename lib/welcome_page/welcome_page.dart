@@ -9,8 +9,6 @@ import 'welcome_page_painter.dart';
 
 const intro_text = 'Welcome to Nightly';
 
-//TODO: event cards need to be displayed in a listview to enable scrolling/overflow
-//TODO: SliverAppBar
 //TODO: refactor this monster file
 
 void showEditorPage(context) {
@@ -44,16 +42,16 @@ class WelcomePage extends StatelessWidget {
         padding: EdgeInsets.all(20),
         textStyle: TextStyle(fontSize: 24));
 
-    Widget myStack = Stack(children: <Widget>[
+    Widget myStack = Stack(fit: StackFit.expand, children: <Widget>[
       CustomPaint(
         size: Size.fromHeight(welcomeRadius),
         painter: WelcomePagePainter(color: Colors.black),
       ),
-      Positioned(left: 0, right: 0, top: welcomeRadius, child: welcomeBanner),
+      Positioned.fill(top: welcomeRadius, child: welcomeBanner),
     ]);
 
-    Widget bigInviteButton = SizedBox(
-        width: displayWidth * 0.90,
+    final Widget bigInviteButton = Padding(
+        padding: EdgeInsets.all(16),
         child: ElevatedButton(
           style: buttonStyle,
           onPressed: () {
@@ -67,53 +65,52 @@ class WelcomePage extends StatelessWidget {
           ),
         ));
 
-    Widget buttonsColumn = Expanded(
-        child: Container(
-            color: Colors.yellow, // Fills color to bottom of screen
-            child: MediaQuery.removePadding(
-                context: context,
-                // removeTop: true,
-                child: ListView(children: <Widget>[
+    Widget nightlyScrollView = Container(
+        // margin: EdgeInsets.only(top: statusBarHeight),
+        color: Colors.yellow,
+        child: CustomScrollView(
+          slivers: <Widget>[
+            SliverAppBar(
+              stretch: true,
+              pinned: true,
+              onStretchTrigger: () {
+                // Function callback for stretch
+                return Future<void>.value();
+              },
+              expandedHeight: welcomeRadius,
+              flexibleSpace:
+                  FlexibleSpaceBar(title: Text('Nightly'), background: myStack),
+              actions: <Widget>[
+                IconButton(
+                    icon: Icon(Icons.add_circle_rounded),
+                    color: Colors.yellow,
+                    onPressed: () {
+                      showEditorPage(context);
+                    }),
+              ],
+            ),
+            SliverList(
+              delegate: SliverChildListDelegate(
+                <Widget>[
+                  bigInviteButton,
                   EventCards("Today"),
+                  EventCards("Friday"),
                   EventCards("Saturday"),
+                  EventCards("Monday"),
                   EventCards("Next Week"),
-                ]))));
+                  EventCards("Some other time"),
+                ],
+              ),
+            ),
+          ],
+        ));
 
-    Widget centerColumn = Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        mainAxisSize: MainAxisSize.max,
-        children: [
-          SizedBox(
-              height:
-                  statusBarHeight), // Probably a cleaner way to do this exists?
-          myStack,
-          // bigInviteButton, // TODO: re-enable me when working
-          buttonsColumn
-        ]);
-
-    return new Scaffold(
+    return Scaffold(
       extendBodyBehindAppBar: true,
-      backgroundColor: Colors.black, //enable me!
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0, // disables shadow
-        actions: <Widget>[
-          IconButton(
-              icon: Icon(Icons.add_circle_rounded),
-              color: Colors.yellow,
-              onPressed: () {
-                showEditorPage(context);
-              }),
-        ],
-      ),
-      body: centerColumn,
-      //TODO: replace drawer with custom UI
+      backgroundColor: Colors.black,
+      body: nightlyScrollView,
       drawer: Drawer(
-        // Add a ListView to the drawer. This ensures the user can scroll
-        // through the options in the drawer if there isn't enough vertical
-        // space to fit everything.
         child: ListView(
-          // Important: Remove any padding from the ListView.
           padding: EdgeInsets.zero,
           children: [
             Container(
@@ -128,13 +125,6 @@ class WelcomePage extends StatelessWidget {
                 )),
             ListTile(
               title: const Text('sample draft 1'),
-              onTap: () {
-                Navigator.pop(context);
-                showEditorPage(context);
-              },
-            ),
-            ListTile(
-              title: const Text('sample draft 2'),
               onTap: () {
                 Navigator.pop(context);
                 showEditorPage(context);
