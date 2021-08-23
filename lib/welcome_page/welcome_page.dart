@@ -44,104 +44,47 @@ class WelcomePage extends StatelessWidget {
         padding: EdgeInsets.all(20),
         textStyle: TextStyle(fontSize: 24));
 
-    Widget myStack = Stack(children: <Widget>[
+    Widget myStack = Stack(fit: StackFit.expand, children: <Widget>[
       CustomPaint(
         size: Size.fromHeight(welcomeRadius),
         painter: WelcomePagePainter(color: Colors.black),
       ),
-      Positioned(left: 0, right: 0, top: welcomeRadius, child: welcomeBanner),
+      Positioned.fill(top: welcomeRadius, child: welcomeBanner),
     ]);
 
-    Widget bigInviteButton = SizedBox(
-        width: displayWidth * 0.90,
-        child: ElevatedButton(
-          style: buttonStyle,
-          onPressed: () {
-            showEditorPage(context);
-          },
-          child: Column(
-            children: <Widget>[
-              Text("Create invite"),
-              Icon(Icons.arrow_right_alt)
-            ],
+    return Scaffold(
+      body: CustomScrollView(
+        slivers: <Widget>[
+          SliverAppBar(
+            stretch: true,
+            pinned: true,
+            onStretchTrigger: () {
+              // Function callback for stretch
+              return Future<void>.value();
+            },
+            expandedHeight: welcomeRadius,
+            flexibleSpace:
+                FlexibleSpaceBar(title: Text('Nightly'), background: myStack),
           ),
-        ));
+          SliverList(
+            delegate: SliverChildListDelegate(
+              const <Widget>[
+                ListTile(
+                  leading: Icon(Icons.wb_sunny),
+                  title: Text('Sunday'),
+                  subtitle: Text('sunny, h: 80, l: 65'),
+                ),
+                ListTile(
+                  leading: Icon(Icons.wb_sunny),
+                  title: Text('Monday'),
+                  subtitle: Text('sunny, h: 80, l: 65'),
+                ),
 
-    Widget buttonsColumn = Expanded(
-        child: Container(
-            color: Colors.yellow, // Fills color to bottom of screen
-            child: MediaQuery.removePadding(
-                context: context,
-                // removeTop: true,
-                child: ListView(children: <Widget>[
-                  EventCards("Today"),
-                  EventCards("Saturday"),
-                  EventCards("Next Week"),
-                ]))));
-
-    Widget centerColumn = Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        mainAxisSize: MainAxisSize.max,
-        children: [
-          SizedBox(
-              height:
-                  statusBarHeight), // Probably a cleaner way to do this exists?
-          myStack,
-          // bigInviteButton, // TODO: re-enable me when working
-          buttonsColumn
-        ]);
-
-    return new Scaffold(
-      extendBodyBehindAppBar: true,
-      backgroundColor: Colors.black, //enable me!
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0, // disables shadow
-        actions: <Widget>[
-          IconButton(
-              icon: Icon(Icons.add_circle_rounded),
-              color: Colors.yellow,
-              onPressed: () {
-                showEditorPage(context);
-              }),
+                // ListTiles++
+              ],
+            ),
+          ),
         ],
-      ),
-      body: centerColumn,
-      //TODO: replace drawer with custom UI
-      drawer: Drawer(
-        // Add a ListView to the drawer. This ensures the user can scroll
-        // through the options in the drawer if there isn't enough vertical
-        // space to fit everything.
-        child: ListView(
-          // Important: Remove any padding from the ListView.
-          padding: EdgeInsets.zero,
-          children: [
-            Container(
-                height: 125.0,
-                child: DrawerHeader(
-                  decoration: BoxDecoration(
-                    color: Colors.yellow,
-                  ),
-                  child: Text('My invite drafts',
-                      style:
-                          TextStyle(fontSize: 28, fontWeight: FontWeight.bold)),
-                )),
-            ListTile(
-              title: const Text('sample draft 1'),
-              onTap: () {
-                Navigator.pop(context);
-                showEditorPage(context);
-              },
-            ),
-            ListTile(
-              title: const Text('sample draft 2'),
-              onTap: () {
-                Navigator.pop(context);
-                showEditorPage(context);
-              },
-            ),
-          ],
-        ),
       ),
     );
   }
