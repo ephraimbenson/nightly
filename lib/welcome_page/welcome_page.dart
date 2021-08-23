@@ -9,8 +9,6 @@ import 'welcome_page_painter.dart';
 
 const intro_text = 'Welcome to Nightly';
 
-//TODO: event cards need to be displayed in a listview to enable scrolling/overflow
-//TODO: SliverAppBar
 //TODO: refactor this monster file
 
 void showEditorPage(context) {
@@ -52,39 +50,88 @@ class WelcomePage extends StatelessWidget {
       Positioned.fill(top: welcomeRadius, child: welcomeBanner),
     ]);
 
-    return Scaffold(
-      body: CustomScrollView(
-        slivers: <Widget>[
-          SliverAppBar(
-            stretch: true,
-            pinned: true,
-            onStretchTrigger: () {
-              // Function callback for stretch
-              return Future<void>.value();
-            },
-            expandedHeight: welcomeRadius,
-            flexibleSpace:
-                FlexibleSpaceBar(title: Text('Nightly'), background: myStack),
+    final Widget bigInviteButton = Padding(
+        padding: EdgeInsets.all(16),
+        child: ElevatedButton(
+          style: buttonStyle,
+          onPressed: () {
+            showEditorPage(context);
+          },
+          child: Column(
+            children: <Widget>[
+              Text("Create invite"),
+              Icon(Icons.arrow_right_alt)
+            ],
           ),
-          SliverList(
-            delegate: SliverChildListDelegate(
-              const <Widget>[
-                ListTile(
-                  leading: Icon(Icons.wb_sunny),
-                  title: Text('Sunday'),
-                  subtitle: Text('sunny, h: 80, l: 65'),
-                ),
-                ListTile(
-                  leading: Icon(Icons.wb_sunny),
-                  title: Text('Monday'),
-                  subtitle: Text('sunny, h: 80, l: 65'),
-                ),
+        ));
 
-                // ListTiles++
+    Widget nightlyScrollView = Container(
+        // margin: EdgeInsets.only(top: statusBarHeight),
+        color: Colors.yellow,
+        child: CustomScrollView(
+          slivers: <Widget>[
+            SliverAppBar(
+              stretch: true,
+              pinned: true,
+              onStretchTrigger: () {
+                // Function callback for stretch
+                return Future<void>.value();
+              },
+              expandedHeight: welcomeRadius,
+              flexibleSpace:
+                  FlexibleSpaceBar(title: Text('Nightly'), background: myStack),
+              actions: <Widget>[
+                IconButton(
+                    icon: Icon(Icons.add_circle_rounded),
+                    color: Colors.yellow,
+                    onPressed: () {
+                      showEditorPage(context);
+                    }),
               ],
             ),
-          ),
-        ],
+            SliverList(
+              delegate: SliverChildListDelegate(
+                <Widget>[
+                  bigInviteButton,
+                  EventCards("Today"),
+                  EventCards("Friday"),
+                  EventCards("Saturday"),
+                  EventCards("Monday"),
+                  EventCards("Next Week"),
+                  EventCards("Some other time"),
+                ],
+              ),
+            ),
+          ],
+        ));
+
+    return Scaffold(
+      extendBodyBehindAppBar: true,
+      backgroundColor: Colors.black,
+      body: nightlyScrollView,
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            Container(
+                height: 125.0,
+                child: DrawerHeader(
+                  decoration: BoxDecoration(
+                    color: Colors.yellow,
+                  ),
+                  child: Text('My invite drafts',
+                      style:
+                          TextStyle(fontSize: 28, fontWeight: FontWeight.bold)),
+                )),
+            ListTile(
+              title: const Text('sample draft 1'),
+              onTap: () {
+                Navigator.pop(context);
+                showEditorPage(context);
+              },
+            ),
+          ],
+        ),
       ),
     );
   }
