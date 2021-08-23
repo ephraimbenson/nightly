@@ -32,11 +32,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Nightly',
       theme: ThemeData(
+        primarySwatch: Colors.yellow,
+        fontFamily: 'RobotoMono',
         appBarTheme: AppBarTheme(
             backwardsCompatibility: false,
             systemOverlayStyle: SystemUiOverlayStyle.light,
             iconTheme: IconThemeData(color: Colors.yellow)),
-        primarySwatch: Colors.yellow,
       ),
       home: WelcomePage(),
     );

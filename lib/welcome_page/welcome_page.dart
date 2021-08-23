@@ -31,7 +31,10 @@ class WelcomePage extends StatelessWidget {
         radius: welcomeRadius - 25,
         text: intro_text,
         textStyle: const TextStyle(
-            fontSize: 32, fontWeight: FontWeight.bold, color: Colors.black),
+            fontFamily: 'RobotoMono',
+            fontSize: 32,
+            fontWeight: FontWeight.bold,
+            color: Colors.black),
         startAngle: -pi / 2,
         stretchAngle: pi,
         placement: Placement.inside);
@@ -59,7 +62,11 @@ class WelcomePage extends StatelessWidget {
           },
           child: Column(
             children: <Widget>[
-              Text("Create invite"),
+              Text("Create invite",
+                  style: TextStyle(
+                      fontFamily: 'RobotoMono',
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20)),
               Icon(Icons.arrow_right_alt)
             ],
           ),
