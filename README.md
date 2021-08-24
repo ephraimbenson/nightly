@@ -1,2 +1,2 @@
-# events_demo
-Proof of concept events app with flutter
+# nightly
+Proof of concept nighly event invite app
