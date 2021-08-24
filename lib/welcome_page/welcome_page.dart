@@ -3,7 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_arc_text/flutter_arc_text.dart';
 import 'package:flutter/rendering.dart';
-import 'package:event_demo/editor_page.dart';
+import 'package:nightly/editor_page.dart';
 import 'event_cards.dart';
 import 'welcome_page_painter.dart';
 
@@ -109,7 +109,6 @@ class WelcomePage extends StatelessWidget {
                   EventCards("Saturday"),
                   EventCards("Monday"),
                   EventCards("Next Week"),
-                  EventCards("Some other time"),
                 ],
               ),
             ),

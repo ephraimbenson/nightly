@@ -1,4 +1,4 @@
-package com.example.event_demo
+package com.example.nightly
 
 import io.flutter.embedding.android.FlutterActivity
 
