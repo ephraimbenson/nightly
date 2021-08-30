@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
 import 'package:nightly/welcome_page/welcome_page.dart';
-import 'package:animated_text_kit/animated_text_kit.dart';
 
-class WelcomePageTwo extends StatefulWidget {
+class WelcomeDrawer extends StatefulWidget {
   @override
-  _WelcomePageTwoState createState() => _WelcomePageTwoState();
+  _WelcomeDrawerState createState() => _WelcomeDrawerState();
 }
 
-class _WelcomePageTwoState extends State<WelcomePageTwo> {
+class _WelcomeDrawerState extends State<WelcomeDrawer> {
   final _advancedDrawerController = AdvancedDrawerController();
 
   @override
@@ -39,10 +38,14 @@ class _WelcomePageTwoState extends State<WelcomePageTwo> {
             // width: 250.0,
             child: Text('NIGHTLY',
                 style: TextStyle(
-                    fontSize: 45.0,
-                    fontFamily: 'RobotoMono',
-                    fontWeight: FontWeight.bold,
-                    color: Colors.yellow)),
+                  fontSize: 45.0,
+                  fontFamily: 'RobotoMono',
+                  fontWeight: FontWeight.bold,
+                  foreground: Paint()
+                    ..style = PaintingStyle.stroke
+                    ..strokeWidth = 2
+                    ..color = Colors.yellow,
+                )),
           ),
           leading: IconButton(
             onPressed: _handleMenuButtonPressed,

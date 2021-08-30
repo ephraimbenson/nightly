@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'welcome_page/welcome_page.dart';
-import 'welcome_page/welcome2.dart';
+import 'welcome_page/welcome_drawer.dart';
 
 void main() => runApp(MyApp());
 
@@ -42,7 +42,7 @@ class MyApp extends StatelessWidget {
             systemOverlayStyle: SystemUiOverlayStyle.light,
             iconTheme: IconThemeData(color: Colors.yellow, size: 80.0)),
       ),
-      home: WelcomePageTwo(),
+      home: WelcomeDrawer(),
     );
   }
 }
