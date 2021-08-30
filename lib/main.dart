@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'welcome_page/welcome_page.dart';
+import 'welcome_page/welcome2.dart';
 
 void main() => runApp(MyApp());
 
@@ -32,14 +33,14 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Nightly',
       theme: ThemeData(
-        primarySwatch: Colors.yellow,
+        primarySwatch: Colors.grey,
         fontFamily: 'RobotoMono',
         appBarTheme: AppBarTheme(
             backwardsCompatibility: false,
             systemOverlayStyle: SystemUiOverlayStyle.light,
             iconTheme: IconThemeData(color: Colors.yellow)),
       ),
-      home: WelcomePage(),
+      home: WelcomePageTwo(),
     );
   }
 }
