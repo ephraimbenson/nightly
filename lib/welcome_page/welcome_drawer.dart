@@ -13,8 +13,8 @@ class _WelcomeDrawerState extends State<WelcomeDrawer> {
   @override
   Widget build(BuildContext context) {
     return AdvancedDrawer(
-      backdropColor: Colors.indigo[400],
-      openRatio: 0.8,
+      // backdropColor: Colors.indigo[400],
+      backdropColor: Colors.grey[900],
       controller: _advancedDrawerController,
       animationCurve: Curves.easeInOut,
       animationDuration: const Duration(milliseconds: 300),
@@ -35,7 +35,6 @@ class _WelcomeDrawerState extends State<WelcomeDrawer> {
       child: Scaffold(
         appBar: AppBar(
           title: SizedBox(
-            // width: 250.0,
             child: Text('NIGHTLY',
                 style: TextStyle(
                   fontSize: 45.0,
