@@ -11,6 +11,11 @@ class WelcomePagePainter extends CustomPainter {
     _drawBackground(canvas, shapeBounds);
   }
 
+  void _drawGridBackground(Canvas canvas, Rect shapebounds) {
+    final paint = Paint()..color = color;
+    canvas.drawCircle(Offset.zero, 5, paint);
+  }
+
   void _drawBackground(Canvas canvas, Rect shapeBounds) {
     final paint = Paint()..color = color;
     final backgroundPath = Path()

@@ -31,6 +31,7 @@ dependencies:
   storybook_flutter: ^0.5.1
   flutter_quill: ^1.9.4
   flutter_advanced_drawer: ^1.2.3
+  animated_text_kit: ^4.2.1
   # animated_text_kit: ^4.2.1
 
 dev_dependencies:

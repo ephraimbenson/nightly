@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
 import 'package:nightly/welcome_page/welcome_page.dart';
+import 'package:animated_text_kit/animated_text_kit.dart';
 
 class WelcomePageTwo extends StatefulWidget {
   @override
@@ -13,7 +14,7 @@ class _WelcomePageTwoState extends State<WelcomePageTwo> {
   @override
   Widget build(BuildContext context) {
     return AdvancedDrawer(
-      backdropColor: Colors.blueGrey,
+      backdropColor: Colors.black,
       controller: _advancedDrawerController,
       animationCurve: Curves.easeInOut,
       animationDuration: const Duration(milliseconds: 300),
@@ -33,7 +34,14 @@ class _WelcomePageTwoState extends State<WelcomePageTwo> {
       ),
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('Nightly'),
+          title: SizedBox(
+            // width: 250.0,
+            child: Text('NIGHTLY',
+                style: TextStyle(
+                    fontSize: 40.0,
+                    fontFamily: 'RobotoMono',
+                    color: Colors.yellow)),
+          ),
           leading: IconButton(
             onPressed: _handleMenuButtonPressed,
             icon: ValueListenableBuilder<AdvancedDrawerValue>(
@@ -55,8 +63,8 @@ class _WelcomePageTwoState extends State<WelcomePageTwo> {
       drawer: SafeArea(
         child: Container(
           child: ListTileTheme(
-            textColor: Colors.white,
-            iconColor: Colors.white,
+            textColor: Colors.yellow,
+            iconColor: Colors.yellow,
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [

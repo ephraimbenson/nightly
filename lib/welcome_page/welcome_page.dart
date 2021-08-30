@@ -53,7 +53,7 @@ class WelcomePage extends StatelessWidget {
 
     Widget nightlyScrollView = Container(
         // margin: EdgeInsets.only(top: statusBarHeight),
-        color: Colors.purple,
+        color: Colors.black,
         child: CustomScrollView(
           slivers: <Widget>[
             SliverList(
