@@ -5,6 +5,13 @@ import 'package:flutter/material.dart';
 class EventCards extends StatelessWidget {
   final String header;
   const EventCards(this.header);
+
+  static const headerTextStyle = TextStyle(
+      fontSize: 20, fontWeight: FontWeight.bold, color: Colors.yellow);
+  static const cardTextStyleHeader = TextStyle(
+      color: Colors.yellow, decoration: TextDecoration.underline, fontSize: 20);
+  static const cardTextStyleBody = TextStyle(color: Colors.yellow);
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -15,43 +22,41 @@ class EventCards extends StatelessWidget {
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Text(
             header, // passed in constructor
-            style: TextStyle(
-                fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
+            style: headerTextStyle,
           ),
           Card(
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(5)),
-              color: Colors.black54,
+              shape: new RoundedRectangleBorder(
+                  side: new BorderSide(color: Colors.yellow, width: 2.0),
+                  borderRadius: BorderRadius.circular(4.0)),
+              color: Colors.black38,
               // color: Colors.blue[(8 - index) * 100],
               child: Padding(
                 padding: EdgeInsets.all(10.0),
                 child: new Container(
                   width: double.infinity,
-                  height: 75.0,
+                  height: 100.0,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Text(
                         "sandWitch Party",
-                        style: TextStyle(
-                            color: Colors.yellow,
-                            decoration: TextDecoration.underline),
+                        style: cardTextStyleHeader,
                       ),
                       Row(
                         children: [
                           Icon(Icons.alternate_email, color: Colors.yellow),
                           Text(
                             "10:30 pm - 1 am",
-                            style: TextStyle(color: Colors.yellow),
+                            style: cardTextStyleBody,
                           ),
                         ],
                       ),
                       Row(
                         children: [
-                          Icon(Icons.home, color: Colors.yellow),
+                          Icon(Icons.home_outlined, color: Colors.yellow),
                           Text(
                             "Witch House",
-                            style: TextStyle(color: Colors.yellow),
+                            style: cardTextStyleBody,
                           ),
                         ],
                       )

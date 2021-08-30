@@ -21,9 +21,13 @@ class _EditorPageState extends State<EditorPage> {
     return Scaffold(
       // backgroundColor: Colors.black,
       appBar: AppBar(
-        title: Text(widget.title),
-        systemOverlayStyle: SystemUiOverlayStyle.dark,
-        iconTheme: IconThemeData(color: Colors.black),
+        // backgroundColor: Colors.yellow,
+        title: Text(
+          widget.title,
+          style: TextStyle(color: Colors.yellow),
+        ),
+        systemOverlayStyle: SystemUiOverlayStyle.light,
+        iconTheme: IconThemeData(color: Colors.yellow),
       ),
       body: Center(
         child: Column(

@@ -33,12 +33,14 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Nightly',
       theme: ThemeData(
-        primarySwatch: Colors.grey,
+        primarySwatch: Colors.yellow,
         fontFamily: 'RobotoMono',
         appBarTheme: AppBarTheme(
+            elevation: 0,
+            color: Colors.black,
             backwardsCompatibility: false,
             systemOverlayStyle: SystemUiOverlayStyle.light,
-            iconTheme: IconThemeData(color: Colors.yellow)),
+            iconTheme: IconThemeData(color: Colors.yellow, size: 80.0)),
       ),
       home: WelcomePageTwo(),
     );

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:nightly/editor_page.dart';
 import 'event_cards.dart';
+import 'welcome_page_painter.dart';
 
 const intro_text = 'Welcome to Nightly';
 
@@ -53,26 +54,33 @@ class WelcomePage extends StatelessWidget {
 
     Widget nightlyScrollView = Container(
         // margin: EdgeInsets.only(top: statusBarHeight),
-        color: Colors.black,
         child: CustomScrollView(
-          slivers: <Widget>[
-            SliverList(
-              delegate: SliverChildListDelegate(
-                <Widget>[
-                  bigInviteButton,
-                  EventCards("Today"),
-                  EventCards("Friday"),
-                  EventCards("Saturday"),
-                ],
-              ),
-            ),
-          ],
-        ));
+      slivers: <Widget>[
+        SliverList(
+          delegate: SliverChildListDelegate(
+            <Widget>[
+              bigInviteButton,
+              EventCards("Today"),
+              EventCards("Friday"),
+              EventCards("Saturday"),
+            ],
+          ),
+        ),
+      ],
+    ));
+
+    Widget myStack = Stack(fit: StackFit.expand, children: <Widget>[
+      CustomPaint(
+        size: Size.fromHeight(welcomeRadius),
+        painter: WelcomePagePainter(color: Colors.indigo),
+      ),
+      Positioned.fill(child: nightlyScrollView),
+    ]);
 
     return Scaffold(
       extendBodyBehindAppBar: false,
       backgroundColor: Colors.black,
-      body: nightlyScrollView,
+      body: myStack,
     );
   }
 }

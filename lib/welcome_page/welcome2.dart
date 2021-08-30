@@ -14,7 +14,8 @@ class _WelcomePageTwoState extends State<WelcomePageTwo> {
   @override
   Widget build(BuildContext context) {
     return AdvancedDrawer(
-      backdropColor: Colors.black,
+      backdropColor: Colors.indigo[400],
+      openRatio: 0.8,
       controller: _advancedDrawerController,
       animationCurve: Curves.easeInOut,
       animationDuration: const Duration(milliseconds: 300),
@@ -38,8 +39,9 @@ class _WelcomePageTwoState extends State<WelcomePageTwo> {
             // width: 250.0,
             child: Text('NIGHTLY',
                 style: TextStyle(
-                    fontSize: 40.0,
+                    fontSize: 45.0,
                     fontFamily: 'RobotoMono',
+                    fontWeight: FontWeight.bold,
                     color: Colors.yellow)),
           ),
           leading: IconButton(
@@ -97,7 +99,7 @@ class _WelcomePageTwoState extends State<WelcomePageTwo> {
                 ListTile(
                   onTap: () {},
                   leading: Icon(Icons.favorite),
-                  title: Text('Favourites'),
+                  title: Text('Favorites'),
                 ),
                 ListTile(
                   onTap: () {},
@@ -111,11 +113,15 @@ class _WelcomePageTwoState extends State<WelcomePageTwo> {
                     color: Colors.white54,
                   ),
                   child: Container(
-                    margin: const EdgeInsets.symmetric(
-                      vertical: 16.0,
-                    ),
-                    child: Text('Terms of Service | Privacy Policy'),
-                  ),
+                      margin: const EdgeInsets.symmetric(
+                        vertical: 16.0,
+                      ),
+                      child: Column(
+                        children: [
+                          Text("Terms of Service | Privacy Policy"),
+                          Text("Built with ❤️ by Nightly Team")
+                        ],
+                      )),
                 ),
               ],
             ),
