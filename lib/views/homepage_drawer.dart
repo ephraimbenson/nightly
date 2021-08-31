@@ -1,12 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nightly/views/homepage.dart';
 
-class HomePageDrawer extends StatefulWidget {
-  @override
-  _HomePageDrawerState createState() => _HomePageDrawerState();
-}
-
-class _HomePageDrawerState extends State<HomePageDrawer> {
+class HomePageDrawer extends StatelessWidget {
   final nightlyGif = new Image.asset('assets/images/anim_cropped.gif');
 
   @override
