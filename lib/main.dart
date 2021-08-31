@@ -3,8 +3,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'welcome_page/welcome_page.dart';
-import 'welcome_page/welcome_drawer.dart';
+import 'views/homepage.dart';
+import 'views/homepage_drawer.dart';
 
 void main() => runApp(MyApp());
 
@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
             systemOverlayStyle: SystemUiOverlayStyle.light,
             iconTheme: IconThemeData(color: Colors.yellow, size: 80.0)),
       ),
-      home: WelcomeDrawer(),
+      home: HomePageDrawer(),
     );
   }
 }

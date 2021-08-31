@@ -1,25 +1,21 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:nightly/editor_page.dart';
+import 'package:nightly/views/editor_screen.dart';
 import 'event_cards.dart';
-import 'welcome_page_painter.dart';
+import 'homepage_painter.dart';
 
 const intro_text = 'Welcome to Nightly';
-
-//TODO: refactor this monster file
-
-//TODO: icons in appbar must become stateful widgets and change color depending on scroll position
 
 void showEditorPage(context) {
   print("creating new invite!");
   Navigator.push(
     context,
-    MaterialPageRoute(builder: (context) => EditorPage(title: "My Draft")),
+    MaterialPageRoute(builder: (context) => EditorScreen(title: "My Draft")),
   );
 }
 
-class WelcomePage extends StatelessWidget {
+class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double displayHeight = MediaQuery.of(context).size.height;
@@ -72,7 +68,7 @@ class WelcomePage extends StatelessWidget {
     Widget myStack = Stack(fit: StackFit.expand, children: <Widget>[
       CustomPaint(
         size: Size.fromHeight(welcomeRadius),
-        painter: WelcomePagePainter(color: Colors.indigo),
+        painter: HomePagePainter(color: Colors.indigo),
       ),
       Positioned.fill(child: nightlyScrollView),
     ]);

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 const dotRadius = 1.5;
 
-class WelcomePagePainter extends CustomPainter {
-  WelcomePagePainter({this.color = Colors.yellow});
+class HomePagePainter extends CustomPainter {
+  HomePagePainter({this.color = Colors.yellow});
   final Color color;
 
   @override
@@ -22,7 +22,7 @@ class WelcomePagePainter extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(WelcomePagePainter oldDelegate) {
+  bool shouldRepaint(HomePagePainter oldDelegate) {
     return color != oldDelegate.color;
   }
 }

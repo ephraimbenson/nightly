@@ -4,16 +4,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_quill/flutter_quill.dart' hide Text;
 
-class EditorPage extends StatefulWidget {
-  EditorPage({Key? key, required this.title}) : super(key: key);
+class EditorScreen extends StatefulWidget {
+  EditorScreen({Key? key, required this.title}) : super(key: key);
 
   final String title;
 
   @override
-  _EditorPageState createState() => _EditorPageState();
+  _EditorScreenState createState() => _EditorScreenState();
 }
 
-class _EditorPageState extends State<EditorPage> {
+class _EditorScreenState extends State<EditorScreen> {
   @override
   Widget build(BuildContext context) {
     QuillController _controller = QuillController.basic();

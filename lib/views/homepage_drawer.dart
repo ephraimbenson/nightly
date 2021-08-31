@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:nightly/welcome_page/welcome_page.dart';
+import 'package:nightly/views/homepage.dart';
 
-class WelcomeDrawer extends StatefulWidget {
+class HomePageDrawer extends StatefulWidget {
   @override
-  _WelcomeDrawerState createState() => _WelcomeDrawerState();
+  _HomePageDrawerState createState() => _HomePageDrawerState();
 }
 
-class _WelcomeDrawerState extends State<WelcomeDrawer> {
+class _HomePageDrawerState extends State<HomePageDrawer> {
   final nightlyGif = new Image.asset('assets/images/anim_cropped.gif');
 
   @override
@@ -26,7 +26,7 @@ class _WelcomeDrawerState extends State<WelcomeDrawer> {
                   ..color = Colors.yellow,
               ),
             )),
-        body: WelcomePage(),
+        body: HomePage(),
         drawer: Container(
           width: 200,
           // color: Colors.black,
