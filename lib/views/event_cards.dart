@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:io' show Platform;
 
 class EventCards extends StatelessWidget {
   final String header;
@@ -29,37 +30,57 @@ class EventCards extends StatelessWidget {
               color: Colors.black38,
               child: Padding(
                 padding: EdgeInsets.all(10.0),
-                child: new Container(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Text(
-                        "sandWITCH Party",
-                        style: cardTextStyleHeader,
-                      ),
-                      SizedBox(height: 15),
-                      Row(
-                        children: [
-                          Icon(Icons.alternate_email, color: Colors.yellow),
-                          Text(
-                            " 10:30 pm - 1 am",
-                            style: cardTextStyleBody,
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: 15),
-                      Row(
-                        children: [
-                          Icon(Icons.home_outlined, color: Colors.yellow),
-                          Text(
-                            " witch house",
-                            style: cardTextStyleBody,
-                          ),
-                        ],
-                      )
-                    ],
-                  ),
-                ),
+                child: Container(
+                    child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Text(
+                          "sandWITCH Party",
+                          style: cardTextStyleHeader,
+                        ),
+                        SizedBox(height: 15),
+                        Row(
+                          children: [
+                            Icon(Icons.alternate_email, color: Colors.yellow),
+                            Text(
+                              " 10:30 pm - 1 am",
+                              style: cardTextStyleBody,
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: 15),
+                        Row(
+                          children: [
+                            Icon(Icons.home_outlined, color: Colors.yellow),
+                            Text(
+                              " witch house",
+                              style: cardTextStyleBody,
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                    IconButton(
+                        onPressed: null,
+                        icon: Icon(
+                          Icons.people_outline,
+                          color: Colors.yellow,
+                          size: 40,
+                        )),
+                    IconButton(
+                        onPressed: null,
+                        icon: Icon(
+                          Platform.isIOS
+                              ? Icons.ios_share
+                              : Icons.share_outlined,
+                          color: Colors.yellow,
+                          size: 40,
+                        )),
+                  ],
+                )),
               ))
         ]));
   }
