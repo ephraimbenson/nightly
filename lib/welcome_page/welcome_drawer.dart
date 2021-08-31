@@ -95,7 +95,7 @@ class _WelcomeDrawerState extends State<WelcomeDrawer> {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Text(
-                            "Built with ♥ by",
+                            "Built with 💛 by",
                             textAlign: TextAlign.center,
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
