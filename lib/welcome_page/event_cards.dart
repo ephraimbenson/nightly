@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-//TODO: data object for generating cards
-
 class EventCards extends StatelessWidget {
   final String header;
   const EventCards(this.header);
@@ -29,33 +27,32 @@ class EventCards extends StatelessWidget {
                   side: new BorderSide(color: Colors.yellow, width: 2.0),
                   borderRadius: BorderRadius.circular(4.0)),
               color: Colors.black38,
-              // color: Colors.blue[(8 - index) * 100],
               child: Padding(
                 padding: EdgeInsets.all(10.0),
                 child: new Container(
-                  width: double.infinity,
-                  height: 100.0,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Text(
-                        "sandWitch Party",
+                        "sandWITCH Party",
                         style: cardTextStyleHeader,
                       ),
+                      SizedBox(height: 15),
                       Row(
                         children: [
                           Icon(Icons.alternate_email, color: Colors.yellow),
                           Text(
-                            "10:30 pm - 1 am",
+                            " 10:30 pm - 1 am",
                             style: cardTextStyleBody,
                           ),
                         ],
                       ),
+                      SizedBox(height: 15),
                       Row(
                         children: [
                           Icon(Icons.home_outlined, color: Colors.yellow),
                           Text(
-                            "Witch House",
+                            " witch house",
                             style: cardTextStyleBody,
                           ),
                         ],
